@@ -5,6 +5,7 @@ var accountSid = 'AC93f2920dcda1cf4e3048eb95d3dbb6cc';
 var authToken = 'f0f83955e63cffc7d451e0ed3d5c1834'; 
  
 
+var port = Number(process.env.PORT || 5000);
 var app	= express();
 // Create the server
 var server = http.createServer(app);
@@ -20,6 +21,6 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res){
 	res.render('home');
 });
-var port = 8010;
+
 app.listen(port);
 console.log('listening on port: '+ port);
