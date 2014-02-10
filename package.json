@@ -1,0 +1,24 @@
+{
+  "name": "kia_twilio",
+  "version": "0.0.0",
+  "description": "twilioSampleApp ===============",
+  "main": "twilioapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krithikaraghavan/twilioSampleApp"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krithikaraghavan/twilioSampleApp/issues"
+  },
+  "homepage": "https://github.com/krithikaraghavan/twilioSampleApp",
+  "dependencies": {
+    "http": "0.0.0",
+    "twilio": "~1.5.0",
+    "express": "~3.4.8"
+  }
+}
