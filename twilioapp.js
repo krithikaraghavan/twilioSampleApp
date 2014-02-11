@@ -69,7 +69,7 @@ twiml.say('Please hold while Gig zolo connects you to a conference with the othe
 });  
 
 client.calls.create({
-	url: url: "http://kia-twilio.herokuapp.com/enterConference",
+	url: "http://kia-twilio.herokuapp.com/enterConference",
 	to: "+19734830181",//"+18623715460",
 	from: "+18627728551",
 	IfMachine: 'Hangup'
