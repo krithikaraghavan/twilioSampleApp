@@ -35,7 +35,7 @@ TwilioResponseMongoose = mongoose.model('twilioresponse', twilioResponseSchema);
 
 app.post('/callPhone', function(req,res){
 
-	String response = '';
+	var response = '';
 	client.calls.create({
 	url: "http://kia-twilio.herokuapp.com/voice",
 	to: "+18623715460",
