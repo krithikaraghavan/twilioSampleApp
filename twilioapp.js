@@ -44,7 +44,7 @@ app.post('/callPhone', function(req,res){
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/callPhone',
 	type: 'Create call response',
-	Info: call.nodeClientResponse.body.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON()
 	});
 
 	newtwilioresponse.save(function(err){
@@ -64,7 +64,7 @@ app.post('/voice', function(req, res){
 
 var twiml = new twilioClient.TwimlResponse();
 twiml.say('Please hold while Gig zolo connects you to a conference with the other party.')
-.dial({action:'/handleLeaveConference' method:'POST' hangupOnStar:'true' }, function(){
+.dial({action:'/handleLeaveConference', method:'POST', hangupOnStar:'true' }, function(){
 	this.conference('test conference',);
 });  
 
@@ -99,7 +99,7 @@ app.post('/enterConference', function(req, res){
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/enterConference',
 	type: 'enterConference response',
-	Info: call.nodeClientResponse.body.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON()
 	});
 
 	newtwilioresponse.save(function(err){
@@ -139,7 +139,7 @@ app.post('/connectCall', function(req, res){
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/connectCall',
 	type: 'connectCall response',
-	Info: call.nodeClientResponse.body.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON()
 	});
 
 	newtwilioresponse.save(function(err){
@@ -154,7 +154,7 @@ app.post('/connectCall', function(req, res){
 	if (req.body.Digits === '1') {
 		twiml.say('Connecting you to the conference')
 		.say('You may hit * anytime during the call to leave the conference')
-		.dial({action:'/handleLeaveConference' method:'POST' hangupOnStar:'true' }, function(){
+		.dial({action:'/handleLeaveConference', method:'POST', hangupOnStar:'true' }, function(){
 		this.conference('test conference');
 	});
 	}
