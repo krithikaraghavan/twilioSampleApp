@@ -2,7 +2,7 @@ var express = require('express');
 var twilioClient = require('twilio');
 var http = require('http');
 var mongoose = require("mongoose");
- 
+var Schema = mongoose.Schema;
 var _ = require("underscore");
 
 //var accountSid = 'AC93f2920dcda1cf4e3048eb95d3dbb6cc'; 
