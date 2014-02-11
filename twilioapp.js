@@ -27,36 +27,40 @@ var twilioResponseSchema = new Schema({
 	type : 'String',
 	Info: 'String'
 
-	})
+});
 
 
 TwilioResponseMongoose = mongoose.model('twilioresponse', twilioResponseSchema);
 //https://api.twilio.com/2010-04-01
 
 app.post('/callPhone', function(req,res){
+
+	String response = '';
 	client.calls.create({
 	url: "http://kia-twilio.herokuapp.com/voice",
 	to: "+18623715460",
 	from: "+18627728551",
 	IfMachine: 'Hangup'
 	}, function(err, call) {
-		console.log('call phone done');
-	var newtwilioresponse = new TwilioResponseMongoose({
-	fromUrl: '/callPhone',
-	type: 'Create call response',
-	Info: call.nodeClientResponse.body.toJSON()
-	});
+		response = '{response: call phone done ' + call.sid + '}';
+		console.log(response);
+		var newtwilioresponse = new TwilioResponseMongoose({
+		fromUrl: '/callPhone',
+		type: 'Create call response',
+		Info: call.nodeClientResponse.body.toJSON()
+		});
 
-	newtwilioresponse.save(function(err){
-	if (err) {
-		res.send(500, 'callphone response is not saved');
-	}
-	else {
-		console.log('callphone response is saved');
-	}
-	});
+		newtwilioresponse.save(function(err){
+		if (err) {
+			res.send(500, 'callphone response is not saved');
+		}
+		else {
+			console.log('callphone response is saved');
+		}
+		});
 
-});
+	});
+	res.send(response.toJSON());
 });
 
 
