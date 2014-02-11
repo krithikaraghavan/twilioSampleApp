@@ -40,11 +40,11 @@ app.post('/callPhone', function(req,res){
 	from: "+18627728551",
 	IfMachine: 'Hangup'
 	}, function(err, call) {
-
+		console.log('call phone done');
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/callPhone',
 	type: 'Create call response'
-	Info: call.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
@@ -78,7 +78,7 @@ client.calls.create({
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/voice',
 	type: 'Create call voice response'
-	Info: call.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
@@ -99,7 +99,7 @@ app.post('/enterConference', function(req, res){
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/enterConference',
 	type: 'enterConference response'
-	Info: call.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
@@ -139,7 +139,7 @@ app.post('/connectCall', function(req, res){
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/voice',
 	type: 'Create call voice response'
-	Info: call.toJSON(), 
+	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
