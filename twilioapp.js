@@ -43,7 +43,7 @@ app.post('/callPhone', function(req,res){
 		console.log('call phone done');
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/callPhone',
-	type: 'Create call response'
+	type: 'Create call response',
 	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
@@ -77,7 +77,7 @@ client.calls.create({
 	
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/voice',
-	type: 'Create call voice response'
+	type: 'Create call voice response',
 	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
@@ -98,16 +98,16 @@ app.post('/enterConference', function(req, res){
 
 	var newtwilioresponse = new TwilioResponseMongoose({
 	fromUrl: '/enterConference',
-	type: 'enterConference response'
+	type: 'enterConference response',
 	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
 	if (err) {
-		res.send(500, 'callphone response is not saved');
+		res.send(500, 'enterConference response is not saved');
 	}
 	else {
-		console.log('callphone response is saved');
+		console.log('enterConference response is saved');
 	}
 	});
 
@@ -137,17 +137,17 @@ twiml.say('Sorry, the other party left the conference. This conference has ended
 app.post('/connectCall', function(req, res){
 
 	var newtwilioresponse = new TwilioResponseMongoose({
-	fromUrl: '/voice',
-	type: 'Create call voice response'
+	fromUrl: '/connectCall',
+	type: 'connectCall response',
 	Info: call.nodeClientResponse.body.toJSON(), 
 	});
 
 	newtwilioresponse.save(function(err){
 	if (err) {
-		res.send(500, 'callphone response is not saved');
+		res.send(500, 'connectCall response is not saved');
 	}
 	else {
-		console.log('callphone response is saved');
+		console.log('connectCall response is saved');
 	}
 	});
 	var twiml = new twilio.TwimlResponse();
