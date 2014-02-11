@@ -65,7 +65,7 @@ app.post('/voice', function(req, res){
 var twiml = new twilioClient.TwimlResponse();
 twiml.say('Please hold while Gig zolo connects you to a conference with the other party.')
 .dial({action:'/handleLeaveConference', method:'POST', hangupOnStar:'true' }, function(){
-	this.conference('test conference',);
+	this.conference('test conference');
 });  
 
 client.calls.create({
