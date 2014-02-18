@@ -33,14 +33,14 @@ var twilioResponseSchema = new Schema({
 TwilioResponseMongoose = mongoose.model('twilioresponse', twilioResponseSchema);
 //https://api.twilio.com/2010-04-01
 
-app.post('/callPhone', function(req,res){
-	//url: "http://kia-twilio.herokuapp.com/voice",
+app.get('/callPhone', function(req,res){
+	
 	
 	var response = '';
 	client.calls.create({
 	to: "+18623715460",
 	from: "+18627728551",
-	url: "http://localhost:5000/voice",
+	url: "http://kia-twilio.herokuapp.com/voice",
 	IfMachine: 'Hangup'
 	}, function(err, call) {
 		response = '{response: call phone done ' + call.sid + '}';
